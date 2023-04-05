@@ -10,6 +10,8 @@ export default function Products() {
   } = useQuery(['products', checked], async () =>{
     console.log('fetching...');
     return fetch(`data/${checked? 'sale_':''}products.json`) .then((res) => res.json());
+  }, {
+    staleTime: 5000,
   })
   const handleChange = () => setChecked((prev) => !prev);
 
